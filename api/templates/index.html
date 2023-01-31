@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-signin-client_id" content="933501104274-q8m28lao4d08v9p2cje14dhhg4pafpuj.apps.googleusercontent.com">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
   <link rel="stylesheet" href="style.css">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <style>
@@ -16,6 +18,11 @@
   <title>Paid Apps For Free</title>
 </head>
 <body style="background: #f1f1f1">
+  <div class="popup">
+    
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    
+  </div>
   <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand d-flex" style="align-items: center" href="#">
@@ -63,6 +70,15 @@
     xhttp.open("GET", "static/apps.json");
     xhttp.send();
     
+    
+    
+    function onSignIn(googleUser) {
+      var profile = googleUser.getBasicProfile();
+      console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+      console.log('Name: ' + profile.getName());
+      console.log('Image URL: ' + profile.getImageUrl());
+      console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    }
     
   </script>
   <script src="main.js" type="text/javascript" charset="utf-8"></script>
