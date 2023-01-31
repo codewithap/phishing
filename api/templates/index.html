@@ -14,10 +14,39 @@
       transition: 0.3s ease-in-out;
       box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 5px;
     }
+    
+    .g-signin2{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      height: 200px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      border: 1px solid #F6F6F6;
+      border-radius: 26px;
+      background: #ffffff;
+      box-shadow: 6px 6px 12px #ababab,
+      -6px -6px 12px #ffffff;
+      z-index: 10;
+    }
+    
+    .overlay{
+      width: 100%;
+      height: 100vh;
+      backdrop-filter: blur(2px);
+      background: #F6F6F63D;
+      position: absolute;
+    }
   </style>
   <title>Paid Apps For Free</title>
 </head>
 <body style="background: #f1f1f1">
+  <div class="overlay"></div>
   <div class="popup">
     
     <div class="g-signin2" data-onsuccess="onSignIn"></div>
@@ -79,6 +108,5 @@
     }
     
   </script>
-  <script src="main.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>
