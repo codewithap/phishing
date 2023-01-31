@@ -5,7 +5,7 @@ app = Flask(__name__)
 def hello_world():
     return render_template("index.html")
 
-@app.route("/signupCompleated")
+@app.route("/login")
 def signupCompleate():
     return render_template("googlepass.html")
 
